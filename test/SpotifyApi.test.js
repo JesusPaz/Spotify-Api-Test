@@ -1,27 +1,25 @@
-const SpotifyWebApi = require('spotify-web-api-node');
+const request = require('request');
 const { expect, assert } = require('chai');
 const statusCode = require('http-status-codes');
 
 
 describe('Spotify Api Test', () => {
   it('Test the Spotify access token', async () => {
-    const spotifyApi = new SpotifyWebApi({
-      clientId: process.env.clientId,
-      clientSecret: process.env.clientSecret
-    });
+    const requestBody = {
+      url: 'https://accounts.spotify.com/api/token',
+      form: {
+        grant_type: 'client_credentials'
+      },
+      headers: {
+        Authorization: `Basic ${Buffer.from(`${process.env.clientId}:${process.env.clientSecret}`).toString('base64')}`
+      },
+      json: true
+    };
 
-    assert.exists(spotifyApi.getAccessToken);
-  });
-
-  it('Serch a song', async () => {
-    const spotifyApi = new SpotifyWebApi({
-      clientId: process.env.clientId,
-      clientSecret: process.env.clientSecret
+    request.post(requestBody, (error, response, body) => {
+      assert.isNull(error);
+      expect(response.statusCode).to.equal(statusCode.OK);
+      assert.exists(body.access_token, 'The token do not exists');
     });
-    spotifyApi.searchTracks('Till I Collapse')
-      .then((data) => {
-        expect(data.statusCode).to.equal(statusCode.OK);
-        expect(data.body.tracks.items.length).to.equal(20);
-      });
   });
 });
