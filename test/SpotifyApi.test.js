@@ -4,7 +4,7 @@ const statusCode = require('http-status-codes');
 
 
 describe('Spotify Api Test', () => {
-  it('Test the Spotify access token', async () => {
+  it('Test the Spotify access token', () => {
     const requestBody = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
