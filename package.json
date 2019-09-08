@@ -33,7 +33,6 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "mochawesome": "^4.1.0",
-    "superagent": "^5.1.0",
-    "superagent-promise": "^1.1.0"
+    "request": "^2.88.0"
   }
 }
