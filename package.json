@@ -4,7 +4,7 @@
   "description": "This is a spotify api testing",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint && mocha -t 5000 --reporter mochawesome --reporter-options reportDir=report,reportFilename=SpotifyApiTesting",
+    "test": "npm run lint && mocha -t 10000 --reporter mochawesome --reporter-options reportDir=report,reportFilename=SpotifyApiTesting",
     "lint": "eslint ./test/**/*.js"
   },
   "repository": {
