@@ -44,11 +44,11 @@ describe('Spotify Api Test', () => {
         },
         json: true
       };
-
+      const numberOfTracks = 20;
       request.get(requestBodySearch, (errorSearch, responseSearch, bodySearch) => {
         assert.isNull(errorSearch);
         expect(responseSearch.statusCode).to.equal(statusCode.OK);
-        expect(bodySearch.tracks.items).to.have.lengthOf(20);
+        expect(bodySearch.tracks.items).to.have.lengthOf(numberOfTracks);
       });
     });
   });
